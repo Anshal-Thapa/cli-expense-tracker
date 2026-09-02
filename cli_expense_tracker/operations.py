@@ -1,11 +1,12 @@
 import cli_expense_tracker.validations as v
 from cli_expense_tracker.exceptions import ExpenseNotFoundError
 from cli_expense_tracker.storage import load_expenses
+from cli_expense_tracker.models import Expense
 
 def next_id(expenses):
     if not expenses:
         return 1
-    else
+    else:
         return max(e.id for e in expenses) + 1
 
 def add_expense(expenses,amount,category,expense_date,description = ""):
@@ -26,7 +27,7 @@ def add_expense(expenses,amount,category,expense_date,description = ""):
 def delete_expense(expenses,expense_id):
     for expense in expenses:
         if expense.id == expense_id:
-            expenses.remove(expense_id)
+            expenses.remove(expense)
             return expenses
     raise ExpenseNotFoundError(f"Expense of {expense_id} not found!!!")
 
